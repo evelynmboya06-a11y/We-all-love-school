@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Marry Me?</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ffd6e5, #fff0f5);
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 500px;
+        padding: 45px 25px;
+        text-align: center;
+        background: white;
+        border-radius: 30px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .heart {
+        font-size: 65px;
+        animation: heartbeat 1.3s infinite;
+    }
+
+    h1 {
+        color: #d6336c;
+        font-size: 38px;
+        margin: 15px 0;
+    }
+
+    p {
+        color: #777;
+        font-size: 18px;
+        margin-bottom: 35px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        min-height: 60px;
+    }
+
+    button {
+        border: none;
+        padding: 15px 30px;
+        border-radius: 30px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #yes {
+        background: #e83e70;
+        color: white;
+    }
+
+    #yes:hover {
+        transform: scale(1.08);
+    }
+
+    #no {
+        background: #ddd;
+        color: #555;
+        position: relative;
+    }
+
+    #message {
+        display: none;
+        color: #d6336c;
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 25px;
+    }
+
+    @keyframes heartbeat {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.15);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="heart">💍</div>
+
+    <h1>WILL YOU MARRY ME?</h1>
+
+    <p>I have one very important question for you... ❤️</p>
+
+    <div class="buttons" id="buttons">
+
+        <button id="yes">YES 💕</button>
+
+        <button id="no">NO 🙈</button>
+
+    </div>
+
+    <div id="message">
+        🥹❤️ I KNEW YOU'D SAY YES! 💍
+        <br><br>
+        You just made me the happiest person alive.
+    </div>
+
+</div>
+
+<script>
+
+const noButton = document.getElementById("no");
+const yesButton = document.getElementById("yes");
+const buttons = document.getElementById("buttons");
+const message = document.getElementById("message");
+
+function moveNoButton() {
+
+    const maxX = 120;
+    const maxY = 40;
+
+    const x = Math.random() * (maxX * 2) - maxX;
+    const y = Math.random() * (maxY * 2) - maxY;
+
+    noButton.style.transform =
+        `translate(${x}px, ${y}px)`;
+}
+
+noButton.addEventListener("mouseenter", moveNoButton);
+
+noButton.addEventListener("touchstart", function(event) {
+    event.preventDefault();
+    moveNoButton();
+});
+
+noButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    moveNoButton();
+});
+
+yesButton.addEventListener("click", function() {
+
+    buttons.style.display = "none";
+
+    message.style.display = "block";
+
+});
+
+</script>
+
+</body>
+</html>
